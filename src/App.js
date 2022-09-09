@@ -14,48 +14,31 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [alert, setAlert]=useState(null);
+  const [alert, setAlert] = useState(null);
 
-  const showAlert=(message,type)=> {
+  const showAlert = (message, type) => {
     setAlert({
       msg: message,
       type: type
     })
-    setTimeout(()=>{
+    setTimeout(() => {
       setAlert(null);
-    },2000);
+    }, 2000);
   }
   return (
     <>
       <BrowserRouter>
-      <Navbar title="textutils" about="about" />
-      <Alert alert ={alert}/>
-      <div className="container">
-      <Routes>
-        <Route path="/" element={ <TextForm showAlert={showAlert} heading="ENTER THE HEADING" />}  />
-        <Route path="/About" element={<About/>} />
-      </Routes>
+        <Navbar title="textutils" about="about" />
+        <Alert alert={alert} />
+        <div className="container">
+        <TextForm showAlert={showAlert} heading="ENTER THE HEADING" />
+          <Routes>
+            <Route path="/" element={<TextForm showAlert={showAlert} heading="ENTER THE HEADING" />} />
+            <Route path="/About" element={<About />} />
+          </Routes>
 
-      </div>
-    </BrowserRouter>
-
-      {/* <Navbar title="textutils" about="about" />
-      <Alert alert ={alert}/> */}
-      {/* <div className="container  my-3">
-        <Routes>
-          <Route path="/about">
-            <about/>
-          </Route>
-          <Route path ="/">
-            <TextForm showAlert={showAlert} heading="ENTER THE HEADING" />
-          </Route> */}
-
-
-        {/* </Routes> */}
-        {/* <TextForm showAlert={showAlert} heading="ENTER THE HEADING" /> */}
-
-        {/* <About/> */}
-      {/* </div> */}
+        </div>
+      </BrowserRouter>
     </>
   );
 }
